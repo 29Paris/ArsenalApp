@@ -6,7 +6,6 @@
     .controller('TeamController', TeamController);
 
   /** @ngInject */
-  function TeamController(team) {
-    console.log(team);
+  function TeamController() {
   }
 })();

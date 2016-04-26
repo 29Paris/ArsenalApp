@@ -1,0 +1,18 @@
+.league {
+	padding: 40px 0px 100px 0px;
+}
+
+.league .league-table {
+	margin-top: 15px;
+}
+
+.league .league-table img {
+	width: 20px;
+	height: 20px;
+	margin: 0px 10px;
+}
+
+.league .league-select {
+	width: 200px;
+	float: right;
+}

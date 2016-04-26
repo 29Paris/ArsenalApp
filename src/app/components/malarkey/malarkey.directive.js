@@ -18,11 +18,11 @@
 
     return directive;
 
-    function linkFunc(scope, el, attr, vm) {
+    function linkFunc(scope, el) {
       var typist = malarkey(el[0], {
-        typeSpeed: 50,
-        deleteSpeed: 50,
-        pauseDelay: 2000,
+        typeSpeed: 40,
+        deleteSpeed: 40,
+        pauseDelay: 1000,
         loop: true,
         postfix: ' '
       });

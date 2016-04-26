@@ -1,0 +1,15 @@
+.main {
+    padding-top: 20px;
+}
+
+.main .arsenal-slider {
+	margin: auto;
+	margin-top: 25px;
+    height: 350px;
+    width: 600px;
+}
+
+.main .arsenal-slider img {
+    height: 350px;
+    width: 100%;
+}

@@ -6,8 +6,6 @@
     .controller('FixturesController', FixturesController);
 
   /** @ngInject */
-  function FixturesController(fixtures) {
-    console.log(fixtures);
-
+  function FixturesController() {
   }
 })();
