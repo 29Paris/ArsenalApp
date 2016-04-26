@@ -1,17 +1,26 @@
-<div class="container">
+<div class="container main">
   <div class="text-center">
-    <p>
+    <!-- <p>
       <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
-    <p>
-      <acme-malarkey extra-values="['Arsenal Club', 'Premier League','Thierry Henry']"></acme-malarkey> welcome you!
-    </p>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      
+    </p> -->
+    <div class="col-sm-8 col-sm-offset-2">
+      <h3>
+      <acme-malarkey extra-values="['Arsenal Club', '29 Paris']"></acme-malarkey> Welcome you!
+      </h3>
+      <div class="arsenal-slider">
+        <uib-carousel active="main.activeSlide" interval="main.slideInterval">
+          <uib-slide ng-repeat="slide in main.slides track by slide.id" index="slide.id">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>{{slide.title}}</h4>
+            </div>
+          </uib-slide>
+        </uib-carousel>
+      </div>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+    </div>
+  </div>
 </div>

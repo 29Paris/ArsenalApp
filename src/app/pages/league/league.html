@@ -1,0 +1,42 @@
+<div class="container league">
+  <div class="col-sm-10  col-sm-offset-1">
+  	<select name="league" ng-model="league.league" ng-change="league.changeLeague()" class="form-control league-select">
+		<option value="Premier League">Premier League</option>
+		<option value="Ligue 1">Ligue 1</option>
+		<option value="1.Bundesliga">1.Bundesliga</option>
+		<option value="Serie A">Serie A</option>
+		<option value="Primera Division">Primera Division</option>
+  	</select>
+    <h3>{{league.league}}</h3>
+    <table class="table table-bordered league-table">
+      <thead>
+        <tr>
+          <th class="text-center">POS</th>
+          <th class="text-left">CLUB</th>
+          <th class="text-center">PTS</th>
+          <th class="text-center">P</th>
+          <th class="text-center">W</th>
+          <th class="text-center">D</th>
+          <th class="text-center">L</th>
+          <th class="text-center">GF</th>
+          <th class="text-center">GD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="team in league.teams track by $index" ng-class="league.teamColor($index)" class="text-center">
+          <td>{{ $index + 1 }}</td>
+          <td class="text-left">
+            <a href ui-sref="team({teamHref: team._links.team.href, team: team.teamName})"><img ng-src={{team.crestURI}} ng-if="league.pictureReady" alt="" />{{ team.teamName }}</a>
+          </td>
+          <td>{{ team.points }}</td>
+          <td>{{ team.playedGames }}</td>
+          <td>{{ team.wins }}</td>
+          <td>{{ team.draws }}</td>
+          <td>{{ team.losses }}</td>
+          <td>{{ team.goals }}</td>
+          <td>{{ team.goalDifference }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

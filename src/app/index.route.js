@@ -32,7 +32,6 @@
                   teamHref: null },
         resolve: {
           team: function(arsenalService, $stateParams){
-            console.log($stateParams);
             var teamHref = $stateParams.teamHref;
             return arsenalService.getTeamByHref(teamHref);
           }
@@ -41,8 +40,8 @@
         controllerAs: 'team'
       })
       .state('league',{
-        url: '/premierLeague',
-        templateUrl: 'app/pages/league/premierLeague.html',
+        url: '/league',
+        templateUrl: 'app/pages/league/league.html',
         resolve: {
           table: function(arsenalService) {
             return arsenalService.getTable(398);
