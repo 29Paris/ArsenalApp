@@ -1,0 +1,52 @@
+<div class="container comingFixtures">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3> Fixtures {{ comingFixtures.league }} </h3>
+    </div>
+    <div class="col-sm-6 select">
+      <select name="league" ng-model="comingFixtures.league" ng-change="comingFixtures.changeLeague()" class="form-control">
+        <option value="Europe">Multiple League</option>
+        <option value="Premier League">Premier League</option>
+        <option value="Ligue 1">Ligue 1</option>
+        <option value="1.Bundesliga">1.Bundesliga</option>
+        <option value="Serie A">Serie A</option>
+        <option value="Primera Division">Primera Division</option>
+      </select>
+      <select name="league" ng-model="comingFixtures.timeFrame" ng-change="comingFixtures.changeLeague()" class="form-control">
+        <option value="7">A week</option>
+        <option value="14">Two weeks</option>
+        <option value="30">A month</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="match-scroll" infinite-scroll='comingFixtures.loadMore()' infinite-scroll-distance='1' infinite-scroll-immediate-check='false' infinite-scroll-disabled='vm.stopLoad'>
+      <div ng-repeat='match in comingFixtures.matches track by $index' class="col-md-6">
+        <div class="match-info">
+          <div class="match-basic">
+            <h4>{{ match.homeTeamName }} : {{ match.awayTeamName }}</h4>
+            <p>MatchDay: {{ match.matchday }}</p>
+            <p>Date: {{ match.date | date: 'yyyy-MM-dd EEE HH:mm'}}</p>
+            <a class="match-toggle" href ng-click="comingFixtures.toggleMatchDetail(match)" ng-if="!match.showMore">Show records<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+          </div>
+          <div ng-if="match.showMore" class="match-records">
+            <table class="table table-striped" ng-if="match.records.length" style="border: 2px solid #f5f5f5">
+              <tbody>
+                <tr ng-repeat="record in match.records track by $index" class="text-center">
+                  <td>{{ record.date | date: 'EEE yyyy-MM-dd' }}</td>
+                  <td>{{ record.homeTeamName }}</td>
+                  <td>{{ record.result.goalsHomeTeam }} : {{ record.result.goalsAwayTeam }}</td>
+                  <td> {{ record.awayTeamName }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div ng-if="!match.records.length">
+              <h4 class="text-center">No records.</h4>
+            </div>
+            <a class="match-toggle" href ng-click="comingFixtures.toggleMatchDetail(match)">Hide records<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

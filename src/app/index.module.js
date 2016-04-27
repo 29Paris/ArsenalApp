@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('arsenalApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr']);
+    .module('arsenalApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'infinite-scroll']);
 
 })();

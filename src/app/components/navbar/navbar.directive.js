@@ -10,8 +10,7 @@
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
-      scope: {
-      },
+      scope: {},
       controller: NavbarController,
       controllerAs: 'vm',
       bindToController: true

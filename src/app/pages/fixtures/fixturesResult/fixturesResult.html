@@ -1,0 +1,22 @@
+<div class="container fixturesResult">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3> Fixtures {{ fixturesResult.league }} </h3>
+    </div>
+    <div class="col-sm-6 select">
+      <select name="league" ng-model="fixturesResult.league" ng-change="fixturesResult.changeLeague()" class="form-control">
+        <option value="Europe">Multiple League</option>
+        <option value="Premier League">Premier League</option>
+        <option value="Ligue 1">Ligue 1</option>
+        <option value="1.Bundesliga">1.Bundesliga</option>
+        <option value="Serie A">Serie A</option>
+        <option value="Primera Division">Primera Division</option>
+      </select>
+      <select name="league" ng-model="fixturesResult.timeFrame" ng-change="fixturesResult.changeLeague()" class="form-control">
+        <option value="7">A week</option>
+        <option value="14">Two weeks</option>
+        <option value="30">A month</option>
+      </select>
+    </div>
+  </div>
+</div>
