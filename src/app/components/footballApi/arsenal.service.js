@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -8,13 +8,23 @@
   /** @ngInject */
   function arsenal($http, $q) {
 
-    this.getFixtures = function () {
+    this.getComingFixtures = function(timeFrame, leagueId) {
+      var baseFixturesAPI;
+      if (leagueId) {
+        baseFixturesAPI = 'http://api.football-data.org/v1/soccerseasons/' + leagueId + '/fixtures';
+      } else {
+        baseFixturesAPI = 'http://api.football-data.org/v1/fixtures';
+      }
+
+      if (timeFrame) {
+        baseFixturesAPI += '?timeFrame=n' + timeFrame;
+      }
       var deferred = $q.defer();
       $http({
         headers: {
           'X-Auth-Token': 'e0d15924ce51452db3db2aff8b08ba26'
         },
-        url: 'http://api.football-data.org/v1/soccerseasons/398/fixtures?timeFrame=n14',
+        url: baseFixturesAPI,
         method: 'GET'
       }).then(function success(data) {
         deferred.resolve(data);
@@ -24,7 +34,23 @@
       return deferred.promise;
     };
 
-    this.getTeam = function (teamId) {
+    this.getFixtureByHref = function(fixtureHref) {
+      var deferred = $q.defer();
+      $http({
+        headers: {
+          'X-Auth-Token': 'e0d15924ce51452db3db2aff8b08ba26'
+        },
+        url: fixtureHref,
+        method: 'GET'
+      }).then(function success(data) {
+        deferred.resolve(data);
+      }, function error(err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    }
+
+    this.getTeam = function(teamId) {
       var deferred = $q.defer();
       $http({
         headers: {
@@ -40,7 +66,7 @@
       return deferred.promise;
     };
 
-    this.getTeamByHref = function (href) {
+    this.getTeamByHref = function(href) {
       var deferred = $q.defer();
       $http({
         headers: {
@@ -56,7 +82,7 @@
       return deferred.promise;
     };
 
-    this.getTeams = function (leagueId) {
+    this.getTeams = function(leagueId) {
       var deferred = $q.defer();
       $http({
         headers: {
@@ -72,7 +98,7 @@
       return deferred.promise;
     };
 
-    this.getTable = function (leagueId) {
+    this.getTable = function(leagueId) {
       var deferred = $q.defer();
       $http({
         headers: {

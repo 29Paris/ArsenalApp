@@ -1,0 +1,37 @@
+.comingFixtures {
+    padding-bottom: 100px;
+}
+
+.comingFixtures .match-info {
+    margin: 15px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.comingFixtures .match-scroll {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+}
+
+.comingFixtures .match-toggle {
+    display: block;
+    text-align: right
+}
+
+.comingFixtures .match-toggle span {
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+}
+
+.comingFixtures .select {
+    padding-top: 10px;
+}
+
+.comingFixtures .select select {
+    float: right;
+    width: 200px;
+    margin: 10px;
+}
