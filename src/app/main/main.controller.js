@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, toastr, $log) {
+  function MainController($timeout, toastr) {
     var vm = this;
     vm.showToastr = showToastr;
     vm.slideInterval = 3000;
@@ -30,8 +30,7 @@
     }];
 
     function showToastr() {
-      $log.log('click');
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
+      toastr.info('<a href="http://www.arsenal.com" target="_blank"><b>Champion Arsenal</b></a>');
     }
 
   }

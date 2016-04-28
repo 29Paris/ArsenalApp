@@ -6,7 +6,7 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -34,8 +34,8 @@
         url: '/result',
         templateUrl: 'app/pages/fixtures/fixturesResult/fixturesResult.html',
         resolve: {
-          fixtures: function(arsenalService) {
-            return arsenalService.getFixtures();
+          fixturesResult: function(arsenalService) {
+            return arsenalService.getFixturesResult();
           }
         },
         controller: 'FixturesResultController',
@@ -75,6 +75,7 @@
       });
 
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
   }
 
 })();

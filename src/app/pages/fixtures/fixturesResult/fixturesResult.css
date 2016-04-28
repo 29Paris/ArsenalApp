@@ -1,0 +1,18 @@
+.fixturesResult {
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
+.fixturesResult .select {
+    padding-top: 10px;
+}
+
+.fixturesResult .select select {
+    float: right;
+    width: 200px;
+    margin: 10px;
+}
+
+.fixturesResult .match-table {
+	margin-top: 20px;
+}
