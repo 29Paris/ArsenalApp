@@ -8,7 +8,7 @@
   /** @ngInject */
 
   function TeamController(team) {
-    console.log(team);
+    //console.log(team);
 	var vm = this;
 	vm.ini = function() {
 		
@@ -17,5 +17,5 @@
 		vm.marketValue = team.data.squadMarketValue;
 		vm.url = team.data.crestUrl;
 	}
-
+  }
 })();
