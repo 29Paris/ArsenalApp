@@ -1,4 +1,4 @@
-<div id='container' ng-init="team.ini()">
+<div id='container'>
 <div id="overView">
   <div class='content'><img class='img' src='{{team.url}}'></div>
   <div class='content'>
@@ -6,6 +6,33 @@
 	<p>{{team.sName}}</p>
 	<p>{{team.marketValue}}</p>
   </div>
+  <div class='content' style="height:350px; overflow:scroll;">
+    <h3>Fixtures</h3>
+	<table class="table table-bordered league-table">
+	  <thead>
+	    <tr>
+	      <th>Date</th>
+		  <th>Matchday</th>
+		  <th>Home Team</th>
+		  <th>Result</th>
+		  <th>Away Team</th>
+		  <th>Status</th>
+		</tr>
+	  </thead>
+	  
+	  <tbody>
+	    <tr ng-repeat="fixture in team.fixtures">
+		  <td>{{fixture.date}}</td>
+		  <td>{{fixture.matchday}}</td>
+		  <td>{{fixture.homeTeamName}}</td>
+		  <td>{{fixture.result.goalsHomeTeam}}<b>--</b>{{fixture.result.goalsAwayTeam}}</td>
+		  <td>{{fixture.awayTeamName}}</td>
+		  <td>{{fixture.status}}</td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>
 </div>
-<div id="members"></div>
+<div id="members">
+</div>
 </div>
