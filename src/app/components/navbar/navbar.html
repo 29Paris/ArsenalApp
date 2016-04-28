@@ -2,14 +2,15 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ui-sref="home">
-        <img src="./assets/images/Arsenal-logo.png"/>
+        <img src="./assets/images/Arsenal-logo.png" />
       </a>
     </div>
-
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ui-sref="league">League</a></li>
+        <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+        <li ui-sref-active="active"><a ui-sref="league">League</a></li>
+        <li ui-sref-active="active"><a ui-sref="fixtures.coming">Fixtures</a></li>
+        <li ui-sref-active="active"><a ui-sref="fixtures.result">RecentMatches</a></li>
       </ul>
     </div>
   </div>

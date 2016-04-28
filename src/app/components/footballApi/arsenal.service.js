@@ -34,6 +34,30 @@
       return deferred.promise;
     };
 
+    this.getFixturesResult = function(timeFrame, leagueId) {
+      var baseFixturesAPI;
+      var time = timeFrame||7;
+      if (leagueId) {
+        baseFixturesAPI = 'http://api.football-data.org/v1/soccerseasons/' + leagueId + '/fixtures?timeFrame=p' + time;
+      } else {
+        baseFixturesAPI = 'http://api.football-data.org/v1/fixtures?timeFrame=p' + time;
+      }
+
+      var deferred = $q.defer();
+      $http({
+        headers: {
+          'X-Auth-Token': 'e0d15924ce51452db3db2aff8b08ba26'
+        },
+        url: baseFixturesAPI,
+        method: 'GET'
+      }).then(function success(data) {
+        deferred.resolve(data);
+      }, function error(err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    };
+
     this.getFixtureByHref = function(fixtureHref) {
       var deferred = $q.defer();
       $http({
@@ -114,8 +138,5 @@
       return deferred.promise;
     };
   }
-
-
-
 
 })();

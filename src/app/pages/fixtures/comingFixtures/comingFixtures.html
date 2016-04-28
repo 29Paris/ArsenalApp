@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="match-scroll" infinite-scroll='comingFixtures.loadMore()' infinite-scroll-distance='1' infinite-scroll-immediate-check='false' infinite-scroll-disabled='vm.stopLoad'>
+    <div class="match-scroll" infinite-scroll='comingFixtures.loadMore()' infinite-scroll-distance='1' infinite-scroll-immediate-check='false' infinite-scroll-disabled='comingFixtures.stopLoad'>
       <div ng-repeat='match in comingFixtures.matches track by $index' class="col-md-6">
         <div class="match-info">
           <div class="match-basic">
@@ -32,7 +32,7 @@
           <div ng-if="match.showMore" class="match-records">
             <table class="table table-striped" ng-if="match.records.length" style="border: 2px solid #f5f5f5">
               <tbody>
-                <tr ng-repeat="record in match.records track by $index" class="text-center">
+                <tr ng-repeat="record in match.records | orderBy: '-date' track by $index" class="text-center">
                   <td>{{ record.date | date: 'EEE yyyy-MM-dd' }}</td>
                   <td>{{ record.homeTeamName }}</td>
                   <td>{{ record.result.goalsHomeTeam }} : {{ record.result.goalsAwayTeam }}</td>
