@@ -7,6 +7,16 @@
 
 .img {
 	
-	width:230px;
-	height:230px;
+	width:190px;
+	height:190px;
+}
+
+.modal {
+	
+	top:15%;
+}
+
+.modal-body {
+	
+	padding: 0;
 }

@@ -1,3 +1,9 @@
+<script type="text/ng-template" id="modalContent.html">
+  <div class="modal-body">
+    <img ng-src='{{url}}' err-src='http://bit.ly/29ParisMessi' style='width:898px;'>
+  </div>
+</script>
+
 <div id='container'>
 <div id="overView">
   <div class='content'><img class='img' src='{{team.url}}'></div>
@@ -6,33 +12,65 @@
 	<p>{{team.sName}}</p>
 	<p>{{team.marketValue}}</p>
   </div>
-  <div class='content' style="height:350px; overflow:scroll;">
+  <div class='content'>
     <h3>Fixtures</h3>
-	<table class="table table-bordered league-table">
-	  <thead>
-	    <tr>
-	      <th>Date</th>
-		  <th>Matchday</th>
-		  <th>Home Team</th>
-		  <th>Result</th>
-		  <th>Away Team</th>
-		  <th>Status</th>
-		</tr>
-	  </thead>
+	<div style="height:350px; overflow:scroll;">
+	  <table class="table table-bordered league-table">
+	    <thead>
+	      <tr>
+	        <th>Date</th>
+		    <th>Matchday</th>
+		    <th>Home Team</th>
+		    <th>Result</th>
+		    <th>Away Team</th>
+		    <th>Status</th>
+		  </tr>
+	    </thead>
 	  
-	  <tbody>
-	    <tr ng-repeat="fixture in team.fixtures">
-		  <td>{{fixture.date}}</td>
-		  <td>{{fixture.matchday}}</td>
-		  <td>{{fixture.homeTeamName}}</td>
-		  <td>{{fixture.result.goalsHomeTeam}}<b>--</b>{{fixture.result.goalsAwayTeam}}</td>
-		  <td>{{fixture.awayTeamName}}</td>
-		  <td>{{fixture.status}}</td>
-		</tr>
-	  </tbody>
-	</table>
+	    <tbody>
+	      <tr ng-repeat="fixture in team.fixtures">
+		    <td>{{fixture.date}}</td>
+		    <td>{{fixture.matchday}}</td>
+		    <td>{{fixture.homeTeamName}}</td>
+		    <td>{{fixture.result.goalsHomeTeam}}<b>--</b>{{fixture.result.goalsAwayTeam}}</td>
+		    <td>{{fixture.awayTeamName}}</td>
+		    <td>{{fixture.status}}</td>
+		  </tr>
+	    </tbody>
+	  </table>
+	</div>
   </div>
 </div>
 <div id="members">
+  <h3>Players</h3>
+  <div style="height:350px; overflow:scroll;">
+	  <table class="table table-bordered league-table">
+	    <thead>
+	      <tr>
+	        <th ng-click="team.sort(0)">Name</th>
+		    <th ng-click="team.sort(1)">Number</th>
+		    <th ng-click="team.sort(2)">Age</th>
+		    <th>Nationality</th>
+		    <th ng-click="team.sort(3)">Market Value</th>
+		    <th>Position</th>
+			<th>FIFA Data</th>
+		  </tr>
+	    </thead>
+	  
+	    <tbody>
+	      <tr ng-repeat="player in team.players | orderBy: team.order">
+		    <td>{{player.name}}</td>
+		    <td>{{player.jerseyNumber}}</td>
+		    <td>{{player.dateOfBirth | dateToAge}}</td>
+		    <td>{{player.nationality}}</td>
+		    <td>{{player.marketValue}}</td>
+		    <td>{{player.position}}</td>
+			<td><button class="btn btn-primary" type="button" ng-click='team.openn(player.name)'>Check</button></td>
+		  </tr>
+	    </tbody>
+	  </table>
+  </div>
 </div>
 </div>
+
+

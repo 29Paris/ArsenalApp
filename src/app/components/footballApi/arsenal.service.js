@@ -137,6 +137,25 @@
       });
       return deferred.promise;
     };
+	
+	this.getPlayerByHref = function(playerHref) {
+		
+		var deferred = $q.defer();
+		$http({
+		headers: {
+			'X-Auth-Token': 'e0d15924ce51452db3db2aff8b08ba26'
+		}, 
+		url:playerHref, 
+		method: 'GET'
+		}).then(function success(data) {
+			
+			deferred.resolve(data);
+		}, function error(err) {
+			
+			deferred.reject(err);		
+		});
+		return deferred.promise;
+	};
   }
 
 })();
