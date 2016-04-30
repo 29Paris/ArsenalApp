@@ -1,0 +1,15 @@
+<div class="container playerFifa">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>{{ playerFIFA.name }}</h3>
+            <p> Position: {{ playerFIFA.position }} </p>
+            <p> Height: {{ playerFIFA.height }}cm </p>
+            <p> Preferred Foot: {{ playerFIFA.foot }}</p>
+            <p> Rating: {{ playerFIFA.rating }} </p>
+        </div>
+        <div class="col-sm-6 ">
+            <canvas style="width: 500px" id="radar" class="chart chart-radar" chart-data="playerFIFA.data" chart-labels="playerFIFA.labels" chart-colours="playerFIFA.colors">
+            </canvas>
+        </div>
+    </div>
+</div>
