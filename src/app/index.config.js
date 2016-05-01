@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,19 +6,16 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, ChartJsProvider) {
+  function config($logProvider, toastrConfig) {
     // Enable log
     $logProvider.debugEnabled(true);
-ChartJsProvider.setOptions({
-                responsive: true,
-                maintainAspectRatio: false
-            });
+
     // Set options third-party lib
     toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 3000;
+    toastrConfig.timeOut = 2000;
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.progressBar = false;
   }
 
-  
+
 })();

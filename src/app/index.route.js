@@ -77,9 +77,9 @@
         url: '/players/FIFA12/:playerName',
         templateUrl: 'app/pages/players/FIFA12/player.html',
         resolve: {
-          player: function(playerService, $stateParams, $q) {
+          player1: function(playerService, $stateParams, $q) {
             var deffered = $q.defer();
-            var playerName = $stateParams.playerName;
+            var playerName = $stateParams.playerName || 'ThierryHenry';
             playerService.getPlayerData(playerName).then(function success(response){
               deffered.resolve(response);              
             },function error(err){
