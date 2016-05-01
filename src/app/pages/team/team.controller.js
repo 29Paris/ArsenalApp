@@ -60,6 +60,9 @@
 			players.data.players[i].age = date.getTime() - Date.parse(players.data.players[i].dateOfBirth);
 		}
 		$log.log(players);*/
+		players.data.players.forEach(function(player){
+			player.value = parseInt((player.marketValue||'0').replace(" €",''));
+		});
 		vm.players = players.data.players;
 	});
 	/*
@@ -119,8 +122,7 @@
 			vm.order = vm.order == 'nationality'? '-nationality' : 'nationality';
 		}
 		else if(num == 4){
-			
-			vm.order = vm.order == 'marketValue'? '-marketValue' : 'marketValue';
+			vm.order = vm.order == 'value'? '-value' : 'value';
 		}
 		else {
 			
