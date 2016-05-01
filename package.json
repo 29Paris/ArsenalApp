@@ -1,7 +1,9 @@
 {
   "name": "arsenalApp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-youtube-embed": "^1.2.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
