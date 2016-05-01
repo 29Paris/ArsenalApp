@@ -1,0 +1,39 @@
+<div class="container playerFifa">
+  <div class="row">
+    <div class="col-sm-3">
+      <h2 style="margin-bottom: 20px"><span class="badge1"></span>{{ playerFIFA.players[0].name }}</h2>
+      <h4> Position: {{ playerFIFA.players[0].position }} </h4>
+      <h4> Height: {{ playerFIFA.players[0].height }}cm </h4>
+      <h4> Preferred Foot: {{ playerFIFA.players[0].foot }}</h4>
+      <h4> Rating: {{ playerFIFA.players[0].rating }} </h4>
+    </div>
+    <div class="col-sm-6">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="col-sm-3" ng-if="playerFIFA.player2">
+      <h2 style="margin-bottom: 20px"><span class="badge2"></span>{{ playerFIFA.players[1].name }}</h2>
+      <h4> Position: {{ playerFIFA.players[1].position }} </h4>
+      <h4> Height: {{ playerFIFA.players[1].height }}cm </h4>
+      <h4> Preferred Foot: {{ playerFIFA.players[1].foot }}</h4>
+      <h4> Rating: {{ playerFIFA.players[1].rating }} </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Arsenal Players</h3>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="player in playerFIFA.arsenalPlayers"><a href ng-click="playerFIFA.setPlayer1(player)">{{ player }}</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <div style="margin-top: 65px; margin-bottom: 5px">
+        <input id="player1" style="width:200px; display:inline-block" class="form-control" ng-model="playerFIFA.player1Name" placeholder="plz type player fullname"/>
+        <button class="btn btn-warning" ng-click="playerFIFA.getPlayerData('change')">Change player</button>
+      </div>
+      <div>
+        <input id="player2" style="width:200px; display:inline-block" class="form-control" ng-model="playerFIFA.player2Name" />
+        <button class="btn btn-primary" ng-click="playerFIFA.getPlayerData('compare')">Compare player</button>
+      </div>
+    </div>
+  </div>
+</div>

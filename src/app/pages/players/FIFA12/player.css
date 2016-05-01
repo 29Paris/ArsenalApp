@@ -1,0 +1,19 @@
+.playerFifa {
+    padding-top: 100px;
+}
+
+.playerFifa .badge1 {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(151, 187, 205, 1);
+    display: inline-block;
+    margin-right: 10px
+}
+
+.playerFifa .badge2 {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(161, 212, 83, 1);
+    display: inline-block;
+    margin-right: 10px
+}
