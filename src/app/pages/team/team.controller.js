@@ -15,6 +15,10 @@
 	
   angular
     .module('arsenalApp')
+    .filter('toEuro', toEuro);
+	
+  angular
+    .module('arsenalApp')
     .directive('errSrc', errSrc); 
 
   /** @ngInject */
@@ -99,20 +103,28 @@
 		
 		if(num == 0) {
 			
-			vm.order = 'name';
+			vm.order = vm.order == 'name'? '-name' : 'name';
 		}
 		
 		else if(num == 1) {
 			
-			vm.order = 'jerseyNumber';
+			vm.order = vm.order == 'jerseyNumber'? '-jerseyNumber' : 'jerseyNumber';
 		}
 		else if(num == 2) {
 			
-			vm.order = 'dateOfBirth';
+			vm.order = vm.order == 'dateOfBirth'? '-dateOfBirth' : 'dateOfBirth';
+		}
+		else if(num == 3) {
+			
+			vm.order = vm.order == 'nationality'? '-nationality' : 'nationality';
+		}
+		else if(num == 4){
+			
+			vm.order = vm.order == 'marketValue'? '-marketValue' : 'marketValue';
 		}
 		else {
 			
-			vm.order = 'marketValue';
+			vm.order = vm.order == 'position'? '-position' : 'position';
 		}
 	}
   
@@ -149,8 +161,17 @@
     
   }
   
+  function toEuro() {
+	
+      return function(input) {
+          console.log(input);
+		  //console.log(typeof(parseInt(input.replace(/,/g, ''))));
+          return input == null ? '' : parseInt(input.replace(/,/g, ''));
+      }
+  }
+  
   function errSrc() {
-	  
+	
     return {
       link: function(scope, element, attrs) {
         element.bind('error', function() {

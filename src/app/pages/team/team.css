@@ -3,12 +3,16 @@
 	display:inline-block;
 	vertical-align:top;
 	margin-right:50px;
+	margin-left:5%;
+	padding: 0 10px 40px 10px;
 }
 
 .img {
 	
-	width:190px;
-	height:190px;
+	margin:10px;
+	width:220px;
+	height:220px;
+	
 }
 
 .modal {

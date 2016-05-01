@@ -5,16 +5,20 @@
 </script>
 
 <div id='container'>
-<div id="overView">
-  <div class='content'><img class='img' src='{{team.url}}'></div>
+<div id="overView">  
   <div class='content'>
     <h3>{{team.name}}</h3>
-	<p>{{team.sName}}</p>
-	<p>{{team.marketValue}}</p>
+	<p><b>Short Name:</b> {{team.sName}}</p>
+	<p><b>Market Value:</b> {{team.marketValue}}</p>
+	<div style="border:1px solid #999;">
+	  <img class='img' src='{{team.url}}'>
+	</div>
   </div>
   <div class='content'>
-    <h3>Fixtures</h3>
-	<div style="height:350px; overflow:scroll;">
+    <div style='margin-left:4%;'>
+      <h3>Fixtures</h3>
+	</div>
+	<div style="height:350px; overflow:scroll;padding:auto;margin-left:4%;">
 	  <table class="table table-bordered league-table">
 	    <thead>
 	      <tr>
@@ -42,28 +46,32 @@
   </div>
 </div>
 <div id="members">
-  <h3>Players</h3>
-  <div style="height:350px; overflow:scroll;">
+  <div style='margin-left:4%;'>
+    <h3>Players</h3>
+  </div>
+  
+  <input style='margin-left:4%;' type="text" placeholder="Serch player name..." ng-model="sContent.name"/>
+  <div style="height:auto; width:auto; padding:15px 55px 15px 55px;overflow:scroll;">
 	  <table class="table table-bordered league-table">
 	    <thead>
 	      <tr>
-	        <th ng-click="team.sort(0)">Name</th>
-		    <th ng-click="team.sort(1)">Number</th>
-		    <th ng-click="team.sort(2)">Age</th>
-		    <th>Nationality</th>
-		    <th ng-click="team.sort(3)">Market Value</th>
-		    <th>Position</th>
-			<th>FIFA Data</th>
+	        <th ng-click="team.sort(0)"><label style='color:#337ab7;'>Name</label></th>
+		    <th ng-click="team.sort(1)"><label style='color:#337ab7;'>Number</label></th>
+		    <th ng-click="team.sort(2)"><label style='color:#337ab7;'>Age</label></th>
+		    <th ng-click="team.sort(3)"><label style='color:#337ab7;'>Nationality</label></th>
+		    <th ng-click="team.sort(4)"><label style='color:#337ab7;'>Market Value</label></th>
+		    <th ng-click="team.sort(5)"><label style='color:#337ab7;'>Position</label></th>
+			<th><label style='color:#337ab7;'>FIFA Data</label></th>
 		  </tr>
 	    </thead>
 	  
 	    <tbody>
-	      <tr ng-repeat="player in team.players | orderBy: team.order">
+	      <tr ng-repeat="player in team.players | filter: sContent | orderBy: team.order ">
 		    <td>{{player.name}}</td>
 		    <td>{{player.jerseyNumber}}</td>
 		    <td>{{player.dateOfBirth | dateToAge}}</td>
 		    <td>{{player.nationality}}</td>
-		    <td>{{player.marketValue}}</td>
+		    <td>{{player.marketValue | toEuro | currency: '€'}}</td>
 		    <td>{{player.position}}</td>
 			<td><button class="btn btn-primary" type="button" ng-click='team.openn(player.name)'>Check</button></td>
 		  </tr>
