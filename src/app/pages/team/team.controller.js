@@ -61,7 +61,7 @@
 		}
 		$log.log(players);*/
 		players.data.players.forEach(function(player){
-			player.value = parseInt((player.marketValue||'0').replace(" €",''));
+			player.value = parseInt((player.marketValue || '0').replace(" €",''));
 		});
 		vm.players = players.data.players;
 	});
@@ -167,7 +167,6 @@
 	
       return function(input) {
           console.log(input);
-		  //console.log(typeof(parseInt(input.replace(/,/g, ''))));
           return input == null ? '' : parseInt(input.replace(/,/g, ''));
       }
   }
