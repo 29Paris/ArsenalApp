@@ -90,6 +90,12 @@
         },
         controller: 'PlayerFIFAController',
         controllerAs: 'playerFIFA'
+      })
+      .state('list',{
+        url: '/list',
+        templateUrl: 'app/pages/list/list.html',
+        controller: 'ListController',
+        controllerAs: 'list'
       });
 
     $urlRouterProvider.otherwise('/');

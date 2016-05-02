@@ -1,0 +1,22 @@
+<div class="teamList">
+    <div ng-if="loading" class="text-center">
+        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...
+    </div>
+    <div ng-repeat="info in infos track by $index" ng-if="!loading">
+        <div ng-class="{'col-sm-6': $index===0, 'col-sm-3': $index!==0}" style="margin-bottom: 10px">
+            <div ng-if="$index===0" class="keyPlayerInfo" ng-class="{'rare': info.rare}">
+                <h4 style="font-size: 22px">{{info.name}}</h4>
+                <p>Position: {{info.position}}</p>
+                <p>Rating: {{info.rating}}</p>
+                <p>Preferred foot: {{info.foot}}</p>
+                <p>Height: {{info.height}}cm</p>
+            </div>
+            <div ng-if="$index!==0" class="playerInfo" ng-class="{'normal': !info.rare, 'rare': info.rare}">
+            	<h4>{{info.name}}</h4>
+                <p>Position: {{info.position}}</p>
+                <p>Rating: {{info.rating}}</p>
+                <p>Height: {{info.height}}cm</P>
+            </div>
+        </div>
+    </div>
+</div>

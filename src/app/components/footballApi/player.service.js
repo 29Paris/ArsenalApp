@@ -11,7 +11,7 @@
     vm.playersData = {};
 
     vm.getPlayerByName = function(playerName, deferred) {
-      var fullname = playerName.replace(/ /g,'').split(/(?=[A-Z])/);
+      var fullname = playerName.replace(/ /g, '').split(/(?=[A-Z])/);
       var name = fullname.join(" ");
       var searchResult = [];
       vm.playersData.forEach(function(player) {
@@ -26,20 +26,46 @@
       }
     };
 
-    vm.getPlayerData = function(playerName) {
+    vm.getPlayerData = function(query) {
       var deferred = $q.defer();
       if (!Object.keys(vm.playersData).length) {
-        $http.get('app/pages/players/FIFA12/player.json').then(function(response) {
+        $http({
+          headers: {
+            "Accept": "application/json;charset=utf-8"
+          },
+          type: 'GET',
+          url: 'app/pages/players/FIFA12/player.json'
+        }).then(function(response) {
           vm.playersData = response.data;
-          vm.getPlayerByName(playerName, deferred);
+          if (angular.isString(query)) {
+            vm.getPlayerByName(query, deferred);
+          } else {
+            vm.getSquards(query, deferred)
+          }
         });
       } else {
-        vm.getPlayerByName(playerName, deferred);
+        if (angular.isString(query)) {
+          vm.getPlayerByName(query, deferred);
+        } else {
+          vm.getSquards(query, deferred)
+        }
       }
       return deferred.promise;
     };
 
+    vm.getSquards = function(squards, deferred) {
+      var squardsResult = [];
+      vm.playersData.forEach(function(player) {
+        if (squards.indexOf(player.name) > -1) {
+          squardsResult.push(player);
+        }
+      });
+      if (squardsResult.length > 0) {
+        deferred.resolve(squardsResult);
+      } else {
+        deferred.reject("No player found!");
+      }
+    };
 
   }
-
 })();

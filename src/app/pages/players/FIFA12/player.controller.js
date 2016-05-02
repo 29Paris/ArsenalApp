@@ -26,7 +26,20 @@
     vm.player2Name = '';
     vm.player1Name = '';
     vm.radarDatasets = [];
-    vm.arsenalPlayers = ['Petr Cech', 'Per Mertesacker', 'Jack Wilshere', 'Santi Cazorla', 'Alexis Sanchez', 'Mesut Ozil'];
+    var arsenalPlayers = ['Petr Cech', 'Per Mertesacker', 'Jack Wilshere', 'Santi Cazorla', 'Alexis Sánchez', 'Mesut Özil','Olivier Giroud','Aaron Ramsey','Theo Walcott','Danny Welbeck','David Ospina','Alex Oxlade-Chamberlain','Tomáš Rosický','Mathieu Flamini','Mikel Arteta','Natxo Monreal','Kieran Gibbs'];
+    vm.arsenalPlayers = arsenalPlayers.slice(0,5);
+    var currentArsenal = 1;
+    var maxArsenal = Math.ceil(arsenalPlayers.length/5);
+    vm.changeArsenal = function(action){
+      if(action === 'prev'){
+        currentArsenal = (currentArsenal-1)<1 ? 1: currentArsenal-1;
+        vm.arsenalPlayers = arsenalPlayers.slice((currentArsenal-1)*5,currentArsenal*5);
+      }
+      if(action === 'next'){
+        currentArsenal = (currentArsenal+1)>maxArsenal ? currentArsenal : currentArsenal+1;
+        vm.arsenalPlayers = currentArsenal*5>arsenalPlayers.length ? arsenalPlayers.slice((currentArsenal-1)*5) : arsenalPlayers.slice((currentArsenal-1)*5,currentArsenal*5);
+      }
+    };
 
     var initPlayer = function (player) {
       if (player.length && player.length === 1) {
@@ -71,8 +84,8 @@
       };
       var myChart = new Chart(ctx).Radar(data, {
         scaleOverride: true,
-        scaleSteps: 10,
-        scaleStepWidth: 10,
+        scaleSteps: 5,
+        scaleStepWidth: 20,
         scaleStartValue: 0
       });
     }

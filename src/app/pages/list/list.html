@@ -1,0 +1,20 @@
+<div class="container" style="padding-bottom:20px">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="list-group list-group-horizontal">
+                <a href="#" ng-mouseover="list.changeList(0); list.pause=true" ng-mouseleave="list.pause = false" class="list-group-item" ng-class="{'active':list.active('Arsenal')}">Arsenal</a>
+                <a href="#" ng-mouseover="list.changeList(1); list.pause=true" ng-mouseleave="list.pause = false" class="list-group-item" ng-class="{'active':list.active('RealMadrid')}">Real Madrid</a>
+                <a href="#" ng-mouseover="list.changeList(2); list.pause=true" ng-mouseleave="list.pause = false" class="list-group-item" ng-class="{'active':list.active('Bayern')}">Bayern</a>
+                <a href="#" ng-mouseover="list.changeList(3); list.pause=true" ng-mouseleave="list.pause = false" class="list-group-item" ng-class="{'active':list.active('Barcelona')}">Barcelona</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <list-info ng-if="list.active('Arsenal')" infos="list.teamsSquad.Arsenal.squad" loading="list.teamsSquad.Arsenal.loading"></list-info>
+            <list-info ng-if="list.active('RealMadrid')" infos="list.teamsSquad.RealMadrid.squad" loading="list.teamsSquad.RealMadrid.loading"></list-info>
+            <list-info ng-if="list.active('Bayern')" infos="list.teamsSquad.Bayern.squad" loading="list.teamsSquad.Bayern.loading"></list-info>
+            <list-info ng-if="list.active('Barcelona')" infos="list.teamsSquad.Barcelona.squad" loading="list.teamsSquad.Barcelona.loading"></list-info>
+        </div>
+    </div>
+</div>
