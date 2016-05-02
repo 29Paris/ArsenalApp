@@ -28,6 +28,7 @@
       image: 'assets/images/arsenal03-04.jpg',
       title: 'Arsenal 03-04'
     }];
+    vm.theBestVideo = 'sMKoNBRZM1M';
 
     function showToastr() {
       toastr.info('<a href="http://www.arsenal.com" target="_blank"><b>Champion Arsenal</b></a>');
