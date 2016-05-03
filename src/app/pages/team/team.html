@@ -5,6 +5,9 @@
 </script>
 
 <div id='container'>
+<div id='chooseTeam' class='choose'>
+  
+</div>
 <div id="overView">  
   <div class='content'>
     <h3>{{team.name}}</h3>
@@ -18,7 +21,7 @@
     <div style='margin-left:4%;'>
       <h3>Fixtures</h3>
 	</div>
-	<div style="height:350px; overflow:scroll;padding:auto;margin-left:4%;">
+	<div style="height:350px;padding:auto;margin-left:4%;">
 	  <table class="table table-bordered league-table">
 	    <thead>
 	      <tr>
@@ -32,8 +35,8 @@
 	    </thead>
 	  
 	    <tbody>
-	      <tr ng-repeat="fixture in team.fixtures">
-		    <td>{{fixture.date}}</td>
+	      <tr dir-paginate="fixture in team.fixtures | orderBy: '-matchday' | itemsPerPage: 5">
+		    <td>{{fixture.date | date: 'medium'}}</td>
 		    <td>{{fixture.matchday}}</td>
 		    <td>{{fixture.homeTeamName}}</td>
 		    <td>{{fixture.result.goalsHomeTeam}}<b>--</b>{{fixture.result.goalsAwayTeam}}</td>
@@ -42,6 +45,8 @@
 		  </tr>
 	    </tbody>
 	  </table>
+	  <dir-pagination-controls max-size="7" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
 	</div>
   </div>
 </div>
