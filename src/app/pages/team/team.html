@@ -1,14 +1,27 @@
 <script type="text/ng-template" id="modalContent.html">
   <div class="modal-body">
-    <img ng-src='{{url}}' err-src='http://bit.ly/29ParisMessi' style='width:898px;'>
+    <img ng-src='{{url}}' err-src='http://bit.ly/29ParisMessi' style='width:898px; box-shadow: 0 5px 15px rgba(0, 0, 0, .5);'>
   </div>
 </script>
 
-<div id='container'>
-<div id='chooseTeam' class='choose'>
+<div class='container'>
+<div id='selection' class='container'>
+  <select id='selectTeam' class='form-control select' ng-model='team.league' ng-change='team.changeLeague()'>
+    <option selected disabled>Choose League</option>
+	<option value='Premier League'>Premier League</option>
+	<option value='Ligue 1'>Ligue 1</option>
+	<option value='1.Bundesliga'>1.Bundesliga</option>
+	<option value='Serie A'>Serie A</option>
+	<option value='Primera Division'>Primera Division</option>
+  </select>
   
+  <select id='selectTeam' class='form-control select' ng-model='team.aTeam' ng-change='team.changeTeam()'>
+    <option selected disabled>Choose Team</option>
+	<option ng-repeat='oneTeam in team.teams | orderBy: "teamName"' value='{{oneTeam.teamName}}' ng-click='team.changeTeam()'>{{oneTeam.teamName}}</option>
+  </select>
 </div>
-<div id="overView">  
+
+<div id="overView" class='container'>  
   <div class='content'>
     <h3>{{team.name}}</h3>
 	<p><b>Short Name:</b> {{team.sName}}</p>
@@ -18,12 +31,18 @@
 	</div>
   </div>
   <div class='content'>
-    <div style='margin-left:4%;'>
+    <div style='margin-left:8%;'>
       <h3>Fixtures</h3>
 	</div>
-	<div style="height:350px;padding:auto;margin-left:4%;">
+	<div style="margin-left:8%;">
 	  <table class="table table-bordered league-table">
 	    <thead>
+		  <col width="165px" />
+          <col width="81px" />
+          <col width="165px" />
+		  <col width="51px" />
+          <col width="165px" />
+          <col width="101px" />
 	      <tr>
 	        <th>Date</th>
 		    <th>Matchday</th>
@@ -50,7 +69,7 @@
 	</div>
   </div>
 </div>
-<div id="members">
+<div id="members" class='container'>
   <div style='margin-left:4%;'>
     <h3>Players</h3>
   </div>

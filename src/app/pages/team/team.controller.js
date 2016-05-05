@@ -23,7 +23,9 @@
 
   /** @ngInject */
 
-  function TeamController(team, arsenalService, $uibModal, $http, $log) {
+  //var tempTeam = '';
+  //var tempLeague = '';
+  function TeamController(team, arsenalService, $uibModal, LEAGUE, $location, $http, $log) {
  
 	var vm = this;
 	var fixtures;
@@ -83,7 +85,32 @@
 	vm.marketValue = team.data.squadMarketValue;
 	vm.url = team.data.crestUrl;
 	vm.order = 'name';
+	
+	// choose league & team 
+	$log.log(vm.league);
+	//vm.league = 'Premier League' || "Choose League";
+	vm.league = vm.league || "Choose League";
+	vm.aTeam = vm.aTeam || "Choose Team";
+	vm.changeLeague = function() {
 		
+		var leagueCode = LEAGUE[vm.league];
+		arsenalService.getTable(leagueCode).then(function success(data) {
+        vm.pictureReady = true;
+        vm.teams = data.data.standing;
+      })
+	}
+	//vm.changeLeague();
+	vm.changeTeam = function() {
+		
+		//var temp = vm.aTeam.replace(/ /g, '');
+		var newUrlPath = '/teams/' + vm.aTeam.replace(/ /g, '');
+		$log.log($location.path());
+		$log.log(newUrlPath);
+		$location.path(newUrlPath);
+		$location.replace();
+	}
+	
+    //modal & sort	
 	vm.openn = function(nm) {
 		
 		var modalInstance = $uibModal.open({
@@ -132,7 +159,7 @@
   
   }
   
-  function ModalController($scope, $uibModalInstance, $http, name) {
+  function ModalController($scope, imageCheckService, $uibModalInstance, $http, name) {
 
 	console.log(name);
 	if(name.indexOf('Ö')){
@@ -142,8 +169,13 @@
 	}
 	var lastNm = name.split(" ").length == 2? name.split(" ")[1] : name.split(" ")[0];
 	console.log(lastNm);
-	//var url = 'http://bit.ly/29Paris' + lastNm;
-	$scope.url = 'http://bit.ly/29Paris' + lastNm;
+	var url = 'http://bit.ly/29Paris' + lastNm;
+	var defUrl = 'http://bit.ly/29ParisMessi';
+	imageCheckService.isImage(url).then(function(re) {
+		
+		$scope.url = re? url : defUrl;
+	});
+
 	$scope.ok = function () {
     $uibModalInstance.close($scope.url);
   };
@@ -166,7 +198,7 @@
   function toEuro() {
 	
       return function(input) {
-          console.log(input);
+          //console.log(input);
           return input == null ? '' : parseInt(input.replace(/,/g, ''));
       }
   }

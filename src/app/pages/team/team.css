@@ -2,8 +2,8 @@
 	
 	display:inline-block;
 	vertical-align:top;
-	margin-right:50px;
-	margin-left:5%;
+	margin-right:10px;
+	margin-left:0%;
 	padding: 0 10px 40px 10px;
 }
 
@@ -23,9 +23,22 @@
 .modal-body {
 	
 	padding: 0;
+	height:0;
+}
+
+.modal-content {
+	
+	background-color: transparent;
 }
 
 .table {
 	
 	margin-bottom:0;
+}
+
+.select {
+	
+	width: 200px;
+	float: right;
+	margin-left:1%;
 }
