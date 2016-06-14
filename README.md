@@ -1,4 +1,4 @@
-# ArsenalApp By Shuang
+# ArsenalApp
 
 footballApi: http://api.football-data.org/index
 
